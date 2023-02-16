@@ -1,3 +1,6 @@
 // index.ts
 
-export { exampleFunction } from './example-directory';
+export default {
+  extends: ['spectral:oas'],
+  rules: [],
+};

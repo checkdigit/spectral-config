@@ -1,36 +1,36 @@
-# Check Digit < Insert name > Library
+# Check Digit Spectral Config
 
-The Check Digit < Insert Name >  library is a library for Check Digit services to deal with [ short description about what the library does]
-  
-  Features:
-* Feature 1
-* Feature 2
-* Feature3
-* (...)
-
-
+The Check Digit Spectral Config is the standard package to install and configure [Spectral](https://stoplight.io/open-source/spectral/) for use in Check Digit projects.
 
 ### Installing
 
-`npm install @checkdigit/< Insert name >` 
+Spectral Config should be installed as a dev dependency:
+`npm install @checkdigit/spectral-config --save-dev`
 
-### Use
-It could be. i.e.
-```
-import * as insertName from '@checkdigit/< Insert name >';
+### Additional Setup
 
-const someVariable = insertName();
+Once installed, add a file named `.spectral.json` to the root of your project. This file should extend the Check Digit Spectral Config:
 
-```
-
-Or if it can be called as a script. i.e.
-```
-insert-name -b src/package.json
+```jsonc
+{
+  "extends": ["@checkdigit/spectral-config"]
+}
 ```
 
+A script should also be added to your `package.json` to run Spectral:
 
-### Links
+```jsonc
+"scripts": {
+  // ...
+  "lint:spec": "spectral lint src/**/swagger.yml",
+}
+```
 
-* Company website: [your.website.url]
-* Npm: [npm.url]
-    
+To include Spectral in your project's CI/CD pipeline, add the following to your `package.json`:
+
+```jsonc
+"scripts": {
+  // ...
+    "ci:lint": "npm run lint && npm run lint:spec",
+  }
+```
