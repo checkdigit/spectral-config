@@ -2,14 +2,14 @@
   "name": "@checkdigit/spectral-config",
   "version": "0.0.1",
   "description": "Check Digit Spectral Config",
-  "typings": "./dist/index.d.ts",
-  "main": "./dist/index.js",
+  "main": "./spectral.json",
   "prettier": "@checkdigit/prettier-config",
   "engines": {
     "node": ">=12.18",
     "npm": ">=6.14"
   },
   "files": [
+    "spectral.json",
     "dist"
   ],
   "repository": {
