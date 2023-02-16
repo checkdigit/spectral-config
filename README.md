@@ -17,7 +17,7 @@ Once installed, add a file named `.spectral.json` to the root of your project. T
 }
 ```
 
-A script should also be added to your `package.json` to run Spectral:
+Also add the following to your `package.json` to run Spectral:
 
 ```jsonc
 "scripts": {
