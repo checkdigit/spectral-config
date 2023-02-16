@@ -28,7 +28,7 @@
     "@checkdigit/typescript-config": "^3.2.0"
   },
   "peerDependencies": {
-    "@stoplight/spectral-cli": "^5.9.0"
+    "@stoplight/spectral-cli": "6.6.0"
   },
   "scripts": {
     "postversion": "git push && git push --tags",
