@@ -19,7 +19,7 @@ paths:
     get:
       tags:
         - Health
-      operationId: 'get-health'
+      operationId: 'health-get'
       description: This operation returns an example service health response.
       responses:
         '200':
