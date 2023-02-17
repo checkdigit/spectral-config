@@ -31,7 +31,7 @@ To include Spectral in your project's CI/CD pipeline, add the following to your 
 ```jsonc
 "scripts": {
   // ...
-    "ci:lint": "npm run lint && npm run lint:spec",
+    "ci:lint": "... && npm run lint:spec",
   }
 ```
 
