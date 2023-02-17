@@ -1,6 +1,6 @@
 # Check Digit Spectral Config
 
-The Check Digit Spectral Config is the standard package to install and configure [Spectral](https://stoplight.io/open-source/spectral/) for use in Check Digit projects.
+Check Digit Spectral Config is the standard package to install and configure [Spectral](https://stoplight.io/open-source/spectral/) for use in Check Digit projects.
 
 ### Installing
 
@@ -9,7 +9,7 @@ Spectral Config should be installed as a dev dependency:
 
 ### Additional Setup
 
-Once installed, add a file named `.spectral.json` to the root of your project. This file should extend the Check Digit Spectral Config:
+Once installed, add a file named `.spectral.json` to the root of your project. This file should extend Spectral Config:
 
 ```jsonc
 {
@@ -34,3 +34,9 @@ To include Spectral in your project's CI/CD pipeline, add the following to your 
     "ci:lint": "npm run lint && npm run lint:spec",
   }
 ```
+
+### Rules for Certain Warnings and Errors
+
+`operation-operationId  Operation must have "operationId"`
+
+Add an operationId to the operation. Check Digit uses a `noun-noun-verb` naming convention. For example, the correct operationId for a `PUT` to path `/resource/{id}/item/{itemId}/key` is `resource-item-key-put`

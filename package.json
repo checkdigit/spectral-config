@@ -2,14 +2,14 @@
   "name": "@checkdigit/spectral-config",
   "version": "0.0.1",
   "description": "Check Digit Spectral Config",
-  "main": "./spectral.json",
+  "main": "ruleset.json",
   "prettier": "@checkdigit/prettier-config",
   "engines": {
     "node": ">=12.18",
     "npm": ">=6.14"
   },
   "files": [
-    "spectral.json",
+    "ruleset.json",
     "dist"
   ],
   "repository": {
@@ -37,10 +37,10 @@
     "lint": "eslint -f unix --ext .js,.ts 'src/**/*.ts'",
     "lint:fix": "eslint -f unix --ext .js,.ts 'src/**/*.ts' --fix",
     "cover:browser": "jest --coverage=true && open coverage/lcov-report/index.html",
-    "clean": "npm cache verify && rimraf serve coverage node_modules src/api/*/swagger.ts",
+    "clean": "npm cache verify && rimraf coverage node_modules",
     "test": "npm run ci:compile && npm run ci:test && npm run ci:style && npm run ci:lint",
     "ci:compile": "tsc --noEmit",
-    "ci:test": "jest --coverage=false",
+    "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
     "ci:coverage": "jest --coverage=true",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier"
