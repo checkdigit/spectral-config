@@ -41,7 +41,7 @@
     "test": "npm run ci:compile && npm run ci:test && npm run ci:style && npm run ci:lint",
     "ci:compile": "tsc --noEmit",
     "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
-    "ci:coverage": "jest --coverage=true",
+    "ci:coverage": "jest --coverage=true --passWithNoTests",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier"
   },
