@@ -22,7 +22,7 @@ Also add the following to your `package.json` to run Spectral:
 ```jsonc
 "scripts": {
   // ...
-  "lint:spec": "spectral lint src/**/swagger.yml",
+  "lint:openapi": "spectral lint src/**/swagger.yml",
 }
 ```
 
@@ -31,7 +31,7 @@ To include Spectral in your project's CI/CD pipeline, add the following to your 
 ```jsonc
 "scripts": {
   // ...
-    "ci:lint": "... && npm run lint:spec",
+    "ci:lint": "... && npm run lint:openapi",
   }
 ```
 
