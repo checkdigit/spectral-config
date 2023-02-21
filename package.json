@@ -23,6 +23,7 @@
   "homepage": "https://github.com/checkdigit/spectral-config#readme",
   "devDependencies": {
     "@checkdigit/eslint-config": "7.5.0",
+    "@checkdigit/jest-config": "^2.1.0",
     "@checkdigit/prettier-config": "^3.2.0",
     "@checkdigit/typescript-config": "^3.2.0"
   },
