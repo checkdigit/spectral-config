@@ -41,7 +41,7 @@ To include Spectral in your project's CI/CD pipeline, add the following to your 
 
 Install Spectral, by Schwartz IT https://plugins.jetbrains.com/plugin/18520-spectral
 
-Configure at `WebStorm > Settings > Tools > Spectral`. 
+Configure at `WebStorm > Settings > Tools > Spectral`.
 
 Set Ruleset to the absolute path to project's `.spectral.json` (`/Users/.../payment-card/.spectral.json`). This plugin doesn't seem to respect path variables, so this will be global. Hopefully this will be fixed in a future plugin update.
 
