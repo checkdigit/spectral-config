@@ -1,55 +1,56 @@
 {
-  "name": "@checkdigit/library-template",
+  "name": "@checkdigit/spectral-config",
   "version": "0.0.1",
-  "description": "A short description of the intended use of the library",
-  "typings": "./dist/index.d.ts",
-  "main": "./dist/index.js",
+  "description": "Check Digit Spectral Config",
+  "main": "ruleset.json",
   "prettier": "@checkdigit/prettier-config",
   "engines": {
-    "node": ">=12.18",
-    "npm": ">=6.14"
+    "node": ">=16"
   },
+  "files": [
+    "ruleset.json",
+    "dist"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/checkdigit/library-template.git"
+    "url": "git+https://github.com/checkdigit/spectral-config.git"
   },
   "author": "Check Digit, LLC",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/checkdigit/library-template/issues"
+    "url": "https://github.com/checkdigit/spectral-config/issues"
   },
-  "homepage": "https://github.com/checkdigit/library-template#readme",
+  "homepage": "https://github.com/checkdigit/spectral-config#readme",
   "devDependencies": {
-    "@checkdigit/eslint-config": "3.4.2",
-    "@checkdigit/prettier-config": "^1.0.2",
-    "@checkdigit/publish": "^1.0.18",
-    "@checkdigit/typescript-config": "^1.0.5",
-    "@types/jest": "^26.0.22",
-    "eslint": "^7.23.0",
-    "jest": "^26.6.3",
-    "prettier": "^2.2.1",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.4",
-    "ts-node": "^9.1.1",
-    "typescript": "4.2.3"
+    "@checkdigit/eslint-config": "7.5.0",
+    "@checkdigit/jest-config": "^2.1.0",
+    "@checkdigit/prettier-config": "^3.2.0",
+    "@checkdigit/typescript-config": "^3.2.0"
   },
-  "jest": {
-    "collectCoverage": true,
-    "preset": "ts-jest",
-    "testPathIgnorePatterns": [
-      "<rootDir>/build/",
-      "<rootDir>/node_modules/"
-    ]
+  "peerDependencies": {
+    "@stoplight/spectral-cli": "6.6.0"
   },
   "scripts": {
-    "prepublishOnly": "publish",
-    "postpublish": "rimraf dist .npmignore",
-    "preversion": "npm test",
     "postversion": "git push && git push --tags",
-    "lint": "eslint -f unix 'src/**/*.ts'",
-    "lint:fix": "eslint -f unix 'src/**/*.ts' --fix",
-    "prettier": "prettier --list-different 'src/**/*.ts'",
-    "prettier:fix": "prettier --write 'src/**/*.ts'",
-    "test": "tsc --noEmit && jest && npm run prettier && npm run lint"
+    "prettier": "prettier --ignore-path .gitignore --list-different .",
+    "prettier:fix": "prettier --ignore-path .gitignore --write .",
+    "lint": "eslint -f unix --ext .js,.ts 'src/**/*.ts'",
+    "lint:fix": "eslint -f unix --ext .js,.ts 'src/**/*.ts' --fix",
+    "cover:browser": "jest --coverage=true && open coverage/lcov-report/index.html",
+    "clean": "npm cache verify && rimraf coverage node_modules",
+    "test": "npm run ci:compile && npm run ci:test && npm run ci:style && npm run ci:lint",
+    "ci:compile": "tsc --noEmit",
+    "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
+    "ci:coverage": "jest --coverage=true --passWithNoTests",
+    "ci:lint": "npm run lint",
+    "ci:style": "npm run prettier"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@checkdigit/eslint-config"
+    ]
+  },
+  "jest": {
+    "preset": "@checkdigit/jest-config"
   }
 }

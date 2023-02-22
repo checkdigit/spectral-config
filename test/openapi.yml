@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Example Open API Specification
+  version: 1.0.0
+  description: |
+    This API is an example to test any changes to the Spectral ruleset.
+  contact:
+    name: Check Digit
+servers:
+  - url: /example-oas/v2
+tags:
+  - name: Health
+  - name: Example
+
+x-firehose-logged: false
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      operationId: 'health-get'
+      description: This operation returns an example service health response.
+      responses:
+        '200':
+          $ref: '#/components/responses/HealthResponse'
+        default:
+          $ref: '#/components/responses/ServerError'
+
+  /example-item/{exampleItemId}:
+    get:
+      tags:
+        - Example
+      operationId: 'example-item-get'
+      description: This operation returns an example item.
+      parameters:
+        - $ref: '#/components/parameters/exampleItemId'
+        - $ref: '#/components/parameters/at'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExampleItemResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        default:
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - Example
+      operationId: 'example-item-put'
+      description: This operation creates an example item.
+      x-firehose-logged: true
+      parameters:
+        - $ref: '#/components/parameters/exampleItemId'
+      requestBody:
+        $ref: '#/components/requestBodies/ExampleItemRequest'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        default:
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+    ServerTime:
+      type: object
+      additionalProperties: false
+      description: This object contains the current server time.
+      properties:
+        serverTime:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      additionalProperties: false
+      description: Server error message
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+
+    ExampleItemResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - createdOn
+      properties:
+        createdOn:
+          type: string
+          format: date-time
+          description: Example definition.
+          example: '1970-01-01T00:00:00.000Z'
+
+    ExampleRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          enum:
+            - REQUEST A
+            - REQUEST B
+            - REQUEST C
+
+  parameters:
+    exampleItemId:
+      name: exampleItemId
+      in: path
+      description: This is the identifier for the example item.
+      required: true
+      schema:
+        type: string
+
+    at:
+      name: at
+      in: query
+      description: Return data as it was at this time.  Must be at least 1 second in the past.
+      example: '1970-01-01T00:00:00.000Z'
+      required: true
+      schema:
+        type: string
+        format: date-time
+
+  requestBodies:
+    ExampleItemRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExampleRequest'
+
+  responses:
+    ExampleItemResponse:
+      description: Example Item Response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExampleItemResponse'
+      headers:
+        Created-On:
+          $ref: '#/components/headers/Created-On'
+        Updated-On:
+          $ref: '#/components/headers/Updated-On'
+
+    NotFound:
+      description: Not found
+
+    NoContent:
+      description: Success/No Content
+      headers:
+        Created-On:
+          $ref: '#/components/headers/Created-On'
+        Updated-On:
+          $ref: '#/components/headers/Updated-On'
+        ETag:
+          $ref: '#/components/headers/ETag'
+
+    ServerError:
+      description: Server Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    HealthResponse:
+      description: This is an example health response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServerTime'
+
+  headers:
+    ETag:
+      description: Version information for record
+      schema:
+        type: string
+
+    Created-On:
+      description: CreatedOn timestamp for the newly created record
+      schema:
+        type: string
+        format: date-time
+
+    Updated-On:
+      description: UpdatedOn timestamp for the existing record
+      schema:
+        type: string
+        format: date-time
