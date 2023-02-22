@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Check Digit Spectral Config",
   "main": "ruleset.json",
+  "private": false,
   "prettier": "@checkdigit/prettier-config",
   "engines": {
     "node": ">=16"
