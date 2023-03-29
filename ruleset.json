@@ -1,6 +1,7 @@
 {
   "extends": ["spectral:oas"],
   "rules": {
+    "no-$ref-siblings": "off",
     "info-contact": "error",
     "info-description": "error",
     "duplicated-entry-in-enum": "error",
