@@ -1,3 +1,26 @@
 {
-  "extends": ["spectral:oas"]
+  "extends": ["spectral:oas"],
+  "rules": {
+    "info-contact": "error",
+    "info-description": "error",
+    "duplicated-entry-in-enum": "error",
+    "operation-success-response": "error",
+    "operation-operationId-unique": "error",
+    "operation-tag-defined": "error",
+    "no-eval-in-markdown": "error",
+    "no-script-tags-in-markdown": "error",
+    "operation-description": "error",
+    "operation-operationId": "error",
+    "operation-operationId-valid-in-url": "error",
+    "operation-tags": "error",
+    "path-declarations-must-exist": "error",
+    "path-keys-no-trailing-slash": "error",
+    "path-not-include-query": "error",
+    "typed-enum": "error",
+    "oas3-api-servers": "error",
+    "oas3-examples-value-or-externalValue": "error",
+    "oas3-operation-security-defined": "error",
+    "oas3-server-trailing-slash": "error",
+    "oas3-unused-component": "error"
+  }
 }
