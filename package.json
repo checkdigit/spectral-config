@@ -1,16 +1,15 @@
 {
   "name": "@checkdigit/spectral-config",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Check Digit Spectral Config",
   "main": "ruleset.json",
   "private": false,
   "prettier": "@checkdigit/prettier-config",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "files": [
-    "ruleset.json",
-    "dist"
+    "ruleset.json"
   ],
   "repository": {
     "type": "git",
@@ -23,26 +22,20 @@
   },
   "homepage": "https://github.com/checkdigit/spectral-config#readme",
   "devDependencies": {
-    "@checkdigit/eslint-config": "7.5.0",
-    "@checkdigit/jest-config": "^2.1.0",
-    "@checkdigit/prettier-config": "^3.2.0",
-    "@checkdigit/typescript-config": "^3.2.0"
+    "@checkdigit/prettier-config": "^4.0.0"
   },
   "peerDependencies": {
-    "@stoplight/spectral-cli": "6.6.0"
+    "@stoplight/spectral-cli": "6.8.0"
   },
   "scripts": {
-    "postversion": "git push && git push --tags",
     "prettier": "prettier --ignore-path .gitignore --list-different .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
-    "lint": "eslint -f unix --ext .js,.ts 'src/**/*.ts'",
-    "lint:fix": "eslint -f unix --ext .js,.ts 'src/**/*.ts' --fix",
-    "cover:browser": "jest --coverage=true && open coverage/lcov-report/index.html",
-    "clean": "npm cache verify && rimraf coverage node_modules",
+    "lint": "",
+    "lint:fix": "",
     "test": "npm run ci:compile && npm run ci:test && npm run ci:style && npm run ci:lint",
-    "ci:compile": "tsc --noEmit",
+    "ci:compile": "",
     "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
-    "ci:coverage": "jest --coverage=true --passWithNoTests",
+    "ci:coverage": "",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier"
   },
@@ -50,8 +43,5 @@
     "extends": [
       "@checkdigit/eslint-config"
     ]
-  },
-  "jest": {
-    "preset": "@checkdigit/jest-config"
   }
 }
