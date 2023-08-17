@@ -24,15 +24,3 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Calculate Code Coverage
         run: npm run ci:coverage
-      - name: Create Coverage Report for base branch
-        run: |
-          mv coverage/lcov.info coverage/lcov_head.info
-          git fetch
-          git checkout origin/${{ github.event.pull_request.base.ref }}
-          npm ci --ignore-scripts && npm run ci:coverage
-      - name: Post Coverage Report
-        uses: checkdigit/github-actions/coverage-reporter@main
-        with:
-          lcov-file: 'coverage/lcov_head.info'
-          lcov-base: 'coverage/lcov.info'
-          delete-old-comments: true
