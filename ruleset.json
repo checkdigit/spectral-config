@@ -2,6 +2,7 @@
   "extends": ["spectral:oas"],
   "rules": {
     "no-$ref-siblings": "off",
+
     "info-contact": "error",
     "info-description": "error",
     "duplicated-entry-in-enum": "error",
@@ -22,6 +23,19 @@
     "oas3-examples-value-or-externalValue": "error",
     "oas3-operation-security-defined": "error",
     "oas3-server-trailing-slash": "error",
-    "oas3-unused-component": "error"
+    "oas3-unused-component": "error",
+
+    "oas2-api-host": "off",
+    "oas2-api-schemes": "off",
+
+    "oas2-anyOf": "error",
+    "oas2-discriminator": "error",
+    "oas2-host-trailing-slash": "error",
+    "oas2-oneOf": "error",
+    "oas2-operation-formData-consume-check": "error",
+    "oas2-operation-security-defined": "error",
+    "oas2-schema": "error",
+    "oas2-unused-definition": "error",
+    "oas2-valid-media-example": "error"
   }
 }
