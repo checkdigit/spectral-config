@@ -13,7 +13,7 @@ Once installed, add a file named `.spectral.json` to the root of your project. T
 
 ```jsonc
 {
-  "extends": ["@checkdigit/spectral-config"]
+  "extends": ["@checkdigit/spectral-config"],
 }
 ```
 
