@@ -11,7 +11,7 @@ Spectral Config should be installed as a dev dependency:
 
 Once installed, add a file named `.spectral.json` to the root of your project. This file should extend Spectral Config:
 
-```jsonc
+```json
 {
   "extends": ["@checkdigit/spectral-config"]
 }
@@ -19,20 +19,22 @@ Once installed, add a file named `.spectral.json` to the root of your project. T
 
 Also add the following to your `package.json` to run Spectral:
 
-```jsonc
-"scripts": {
-  // ...
-  "lint:openapi": "spectral lint src/**/swagger.yml",
+```json
+{
+  "scripts": {
+    "lint:openapi": "spectral lint src/**/swagger.yml"
+  }
 }
 ```
 
 To include Spectral in your project's CI/CD pipeline, add the following to your `package.json`:
 
-```jsonc
-"scripts": {
-  // ...
-    "ci:lint": "... && npm run lint:openapi",
+```json
+{
+  "scripts": {
+    "ci:lint": "... && npm run lint:openapi"
   }
+}
 ```
 
 ### Plugins

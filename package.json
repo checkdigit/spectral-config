@@ -1,12 +1,12 @@
 {
   "name": "@checkdigit/spectral-config",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Check Digit Spectral Config",
   "main": "ruleset.json",
   "private": false,
   "prettier": "@checkdigit/prettier-config",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11"
   },
   "files": [
     "ruleset.json"
@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/checkdigit/spectral-config#readme",
   "devDependencies": {
-    "@checkdigit/prettier-config": "^4.0.0"
+    "@checkdigit/prettier-config": "^5.3.0"
   },
   "peerDependencies": {
-    "@stoplight/spectral-cli": "6.8.0"
+    "@stoplight/spectral-cli": "6.11.0"
   },
   "scripts": {
     "prettier": "prettier --ignore-path .gitignore --list-different .",
