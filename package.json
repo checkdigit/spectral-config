@@ -6,7 +6,7 @@
   "private": false,
   "prettier": "@checkdigit/prettier-config",
   "engines": {
-    "node": ">=20.11"
+    "node": ">=20.17"
   },
   "files": [
     "ruleset.json"
