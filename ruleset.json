@@ -36,6 +36,16 @@
     "oas2-operation-security-defined": "error",
     "oas2-schema": "error",
     "oas2-unused-definition": "error",
-    "oas2-valid-media-example": "error"
+    "oas2-valid-media-example": "error",
+    "schema-description": {
+      "description": "All schemas must have a description.",
+      "message": "Schema is missing description.",
+      "severity": "error",
+      "given": "$.components.schemas.*",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      }
+    }
   }
 }

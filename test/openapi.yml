@@ -88,6 +88,7 @@ components:
 
     ExampleItemResponse:
       type: object
+      description: The item response for the example.
       additionalProperties: false
       required:
         - createdOn
@@ -98,6 +99,7 @@ components:
 
     ExampleRequest:
       type: object
+      description: The item request for the example.
       additionalProperties: false
       required:
         - name
