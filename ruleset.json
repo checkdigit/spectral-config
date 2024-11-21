@@ -36,6 +36,17 @@
     "oas2-operation-security-defined": "error",
     "oas2-schema": "error",
     "oas2-unused-definition": "error",
-    "oas2-valid-media-example": "error"
+    "oas2-valid-media-example": "error",
+
+    "header-required-property": {
+      "description": "All headers must explicitly define whether they are required.",
+      "message": "Header is missing 'required' property.",
+      "severity": "error",
+      "given": "$.components.headers.*",
+      "then": {
+        "field": "required",
+        "function": "defined"
+      }
+    }
   }
 }

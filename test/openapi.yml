@@ -177,17 +177,20 @@ components:
 
   headers:
     ETag:
+      required: false
       description: Version information for record
       schema:
         type: string
 
     Created-On:
+      required: false
       description: CreatedOn timestamp for the newly created record
       schema:
         type: string
         format: date-time
 
     Updated-On:
+      required: false
       description: UpdatedOn timestamp for the existing record
       schema:
         type: string

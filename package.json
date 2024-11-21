@@ -1,12 +1,12 @@
 {
   "name": "@checkdigit/spectral-config",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Check Digit Spectral Config",
   "main": "ruleset.json",
   "private": false,
   "prettier": "@checkdigit/prettier-config",
   "engines": {
-    "node": ">=20.11"
+    "node": ">=20.17"
   },
   "files": [
     "ruleset.json"
