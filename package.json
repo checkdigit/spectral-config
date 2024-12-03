@@ -1,47 +1,42 @@
 {
   "name": "@checkdigit/spectral-config",
-  "version": "2.1.1",
-  "description": "Check Digit Spectral Config",
-  "main": "ruleset.json",
+  "version": "3.0.0",
   "private": false,
-  "prettier": "@checkdigit/prettier-config",
-  "engines": {
-    "node": ">=20.17"
+  "description": "Check Digit Spectral Config",
+  "homepage": "https://github.com/checkdigit/spectral-config#readme",
+  "bugs": {
+    "url": "https://github.com/checkdigit/spectral-config/issues"
   },
-  "files": [
-    "ruleset.json"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/checkdigit/spectral-config.git"
   },
-  "author": "Check Digit, LLC",
   "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/checkdigit/spectral-config/issues"
-  },
-  "homepage": "https://github.com/checkdigit/spectral-config#readme",
-  "devDependencies": {
-    "@checkdigit/prettier-config": "^5.3.0"
-  },
-  "peerDependencies": {
-    "@stoplight/spectral-cli": "6.11.0"
-  },
+  "author": "Check Digit, LLC",
+  "main": "ruleset.json",
+  "files": [
+    "ruleset.json"
+  ],
   "scripts": {
-    "prettier": "prettier --ignore-path .gitignore --list-different .",
-    "prettier:fix": "prettier --ignore-path .gitignore --write .",
-    "lint": "",
-    "lint:fix": "",
-    "test": "npm run ci:compile && npm run ci:test && npm run ci:style && npm run ci:lint",
     "ci:compile": "",
-    "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
     "ci:coverage": "",
     "ci:lint": "npm run lint",
-    "ci:style": "npm run prettier"
+    "ci:style": "npm run prettier",
+    "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
+    "lint": "",
+    "lint:fix": "",
+    "prettier": "prettier --ignore-path .gitignore --list-different .",
+    "prettier:fix": "prettier --ignore-path .gitignore --write .",
+    "test": "npm run ci:compile && npm run ci:test && npm run ci:style && npm run ci:lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "@checkdigit/eslint-config"
-    ]
+  "prettier": "@checkdigit/prettier-config",
+  "devDependencies": {
+    "@checkdigit/prettier-config": "^6.0.0"
+  },
+  "peerDependencies": {
+    "@stoplight/spectral-cli": "6.14.2"
+  },
+  "engines": {
+    "node": ">=22.11"
   }
 }
