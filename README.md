@@ -54,7 +54,3 @@ Set Included files to the following glob pattern `**/*swagger.yml`.
 Install Spectral, by Spotlight https://marketplace.visualstudio.com/items?itemName=stoplight.spectral
 
 ### Rules for Certain Warnings and Errors
-
-`operation-operationId  Operation must have "operationId"`
-
-Add an operationId to the operation. Check Digit uses a `noun-noun-verb` naming convention. For example, the correct operationId for a `PUT` to path `/resource/{id}/item/{itemId}/key` is `resource-item-key-put`

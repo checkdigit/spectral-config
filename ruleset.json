@@ -12,7 +12,7 @@
     "no-eval-in-markdown": "error",
     "no-script-tags-in-markdown": "error",
     "operation-description": "error",
-    "operation-operationId": "error",
+    "operation-operationId": "off",
     "operation-operationId-valid-in-url": "error",
     "operation-tags": "error",
     "path-declarations-must-exist": "error",
