@@ -37,6 +37,6 @@
     "@stoplight/spectral-cli": "6.15.0"
   },
   "engines": {
-    "node": ">=22.15"
+    "node": ">=22.18"
   }
 }
