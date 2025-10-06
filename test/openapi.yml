@@ -30,7 +30,6 @@ paths:
     get:
       tags:
         - Example
-      operationId: 'example-item-get'
       description: This operation returns an example item.
       parameters:
         - $ref: '#/components/parameters/exampleItemId'
@@ -45,7 +44,6 @@ paths:
     put:
       tags:
         - Example
-      operationId: 'example-item-put'
       description: This operation creates an example item.
       x-firehose-logged: true
       parameters:
