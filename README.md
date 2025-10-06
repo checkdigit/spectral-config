@@ -54,3 +54,18 @@ Set Included files to the following glob pattern `**/*swagger.yml`.
 Install Spectral, by Spotlight https://marketplace.visualstudio.com/items?itemName=stoplight.spectral
 
 ### Rules for Certain Warnings and Errors
+
+#### `no-operationId-allowed`
+
+The `no-operationId-allowed` rule enforces that `operationId` field **must not** be in the operations.
+
+**Rationale:**  
+The use of `operationId` require manual effort and can lead to inconsistencies and maintenance challenges. By disallowing `operationId`, we automatically maintain a consistent naming convention as part of our code generation tool chain rely on paths and HTTP methods for operation identification.
+
+**Migration Guidance:**
+
+- Remove any `operationId` fields.
+- References to the previously generated Koa router Context typings:
+  - Update the openapi related code generation dependencies, and update npm script `prepare` according to the coding standards to activate the koa router typing support.
+  - with koa router typing supported enabled, the typing references should now be able to removed from the router implementation.
+  - just in case the types need to be used in somewhere else, they'll follow `${Path}${Method}` pattern in PascalCase. For example, `PUT /account/{accountId}:` will translate to AccountPutContext.

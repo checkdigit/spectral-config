@@ -48,7 +48,7 @@
       "description": "operationId is not allowed in our API style.",
       "message": "Remove `operationId` from operations.",
       "severity": "error",
-      "given": "$.paths[*][*]",
+      "given": "$.paths[*][get,put,post,patch,delete,options,head,trace]",
       "then": {
         "function": "schema",
         "functionOptions": {
