@@ -1,19 +1,17 @@
 {
-  "extends": ["spectral:oas"],
+  "extends": [
+    "spectral:oas"
+  ],
   "rules": {
     "no-$ref-siblings": "off",
-
     "info-contact": "error",
     "info-description": "error",
     "duplicated-entry-in-enum": "error",
     "operation-success-response": "error",
-    "operation-operationId-unique": "error",
     "operation-tag-defined": "error",
     "no-eval-in-markdown": "error",
     "no-script-tags-in-markdown": "error",
     "operation-description": "error",
-    "operation-operationId": "off",
-    "operation-operationId-valid-in-url": "error",
     "operation-tags": "error",
     "path-declarations-must-exist": "error",
     "path-keys-no-trailing-slash": "error",
@@ -24,10 +22,8 @@
     "oas3-operation-security-defined": "error",
     "oas3-server-trailing-slash": "error",
     "oas3-unused-component": "error",
-
     "oas2-api-host": "off",
     "oas2-api-schemes": "off",
-
     "oas2-anyOf": "error",
     "oas2-discriminator": "error",
     "oas2-host-trailing-slash": "error",
@@ -37,7 +33,6 @@
     "oas2-schema": "error",
     "oas2-unused-definition": "error",
     "oas2-valid-media-example": "error",
-
     "header-required-property": {
       "description": "All headers must explicitly define whether they are required.",
       "message": "Header is missing 'required' property.",
@@ -46,6 +41,28 @@
       "then": {
         "field": "required",
         "function": "defined"
+      }
+    },
+    "operation-operationId": "off",
+    "operation-operationId-unique": "off",
+    "operation-operationId-valid-in-url": "off",
+    "no-operationId-allowed": {
+      "description": "operationId is not allowed in our API style.",
+      "message": "Remove `operationId` from operations.",
+      "severity": "error",
+      "given": "$.paths[*][*]",
+      "then": {
+        "function": "schema",
+        "functionOptions": {
+          "schema": {
+            "type": "object",
+            "not": {
+              "required": [
+                "operationId"
+              ]
+            }
+          }
+        }
       }
     }
   }
