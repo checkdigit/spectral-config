@@ -60,12 +60,12 @@ Install Spectral, by Spotlight https://marketplace.visualstudio.com/items?itemNa
 The `no-operationId-allowed` rule enforces that `operationId` field **must not** be in the operations.
 
 **Rationale:**  
-The use of `operationId` require manual effort and can lead to inconsistencies and maintenance challenges. By disallowing `operationId`, we automatically maintain a consistent naming convention as part of our code generation tool chain rely on paths and HTTP methods for operation identification.
+The use of `operationId` requires manual effort and can lead to inconsistencies and maintenance challenges. By disallowing `operationId`, we automatically maintain a consistent naming convention, since our code generation tool chain relies on paths and HTTP methods for operation identification.
 
 **Migration Guidance:**
 
 - Remove any `operationId` fields.
 - References to the previously generated Koa router Context typings:
-  - Update the openapi related code generation dependencies, and update npm script `prepare` according to the coding standards to activate the koa router typing support.
-  - with koa router typing supported enabled, the typing references should now be able to removed from the router implementation.
-  - just in case the types need to be used in somewhere else, they'll follow `${Path}${Method}` pattern in PascalCase. For example, `PUT /account/{accountId}:` will translate to AccountPutContext.
+  - Update the OpenAPI-related code generation dependencies, and update the npm script `prepare` according to the coding standards to activate Koa router typing support.
+  - With Koa router typing support enabled, the typing references should now be able to be removed from the router implementation.
+  - Just in case the types need to be used elsewhere, they'll follow the `${Path}${Method}` pattern in PascalCase. For example, `PUT /account/{accountId}` will translate to AccountPutContext.
