@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "spectral:oas"
-  ],
+  "extends": ["spectral:oas"],
   "rules": {
     "no-$ref-siblings": "off",
     "info-contact": "error",
@@ -57,9 +55,7 @@
           "schema": {
             "type": "object",
             "not": {
-              "required": [
-                "operationId"
-              ]
+              "required": ["operationId"]
             }
           }
         }
