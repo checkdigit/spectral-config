@@ -23,7 +23,7 @@
     "ci:coverage": "",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier",
-    "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json --resolver=spectral-schema-resolver.cjs",
+    "ci:test": "spectral lint test/openapi.yml --ruleset test/.spectral.json",
     "lint": "",
     "lint:fix": "",
     "oas31": "spectral lint test/openapi-31.yml --ruleset test/.spectral.json --resolver=spectral-schema-resolver.cjs",
