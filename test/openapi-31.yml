@@ -1,0 +1,137 @@
+openapi: 3.1.1
+info:
+  title: Test Service API
+  description: Test Service API
+  version: 1.0.0
+  contact:
+    name: Check Digit LLC.
+servers:
+  - url: /test-openapi/v3
+tags:
+  - name: Service Health
+  - name: API
+x-firehose-logged: false
+
+paths:
+  /ping:
+    head:
+      description: Test service connectivity with headers only
+      operationId: ping-head
+      tags:
+        - Service Health
+      responses:
+        '200':
+          description: ping successful
+        default:
+          description: Unexpected error occurred
+    get:
+      description: Test service connectivity
+      operationId: ping-get
+      tags:
+        - Service Health
+      responses:
+        '200':
+          description: ping get successful (extra description)
+          $ref: '#/components/responses/PingGetResponse'
+
+        default:
+          description: Unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Ping:
+      type: object
+      required:
+        - serverTime
+        - pet
+        - currencyByHttps
+        - currencyByFile
+        - currencyByService
+      properties:
+        serverTime:
+          type: string
+          format: date-time
+          description: Current server time
+        pet:
+          $ref: '#/components/schemas/Pet'
+        currencyByHttps:
+          $ref: 'https://currency.checkdigit/schema/currency.json#/definitions/CurrencyAlphabeticCode'
+        currencyByFile:
+          $ref: '../node_modules/@checkdigit/currency/src/schema/currency.json#/definitions/CurrencyAlphabeticCode'
+        currencyByService:
+          $ref: '#/components/schemas/CurrencyByService'
+
+    CurrencyByService:
+      type: string
+      description: Currency code fetched from service
+      $ref: 'service://@checkdigit/currency/src/schema/currency.json#/definitions/CurrencyAlphabeticCode'
+
+    Error:
+      description: Error message
+      properties:
+        message:
+          type: string
+        fields:
+          type: object
+
+    Pet:
+      description: original pet
+      type: object
+      required: [petType]
+      properties:
+        petType:
+          type: string
+          description: The type of pet
+      discriminator:
+        propertyName: petType
+      oneOf:
+        - $ref: '#/components/schemas/Dog'
+        - $ref: '#/components/schemas/Cat'
+      unevaluatedProperties: false
+
+    Dog:
+      type: object
+      properties:
+        petType:
+          const: dog
+        bark:
+          type: boolean
+        numberOfLegs:
+          const: 4
+        breed:
+          type:
+            - string
+            - integer
+            - 'null'
+          description: Dog breed
+          examples:
+            - golden retriever
+            - 12345
+            - null
+      required: [petType, bark]
+      additionalProperties: false
+
+    Cat:
+      type: object
+      properties:
+        petType:
+          const: cat
+        hunts:
+          type: boolean
+        age:
+          type: integer
+          minimum: 0
+      required: [petType, hunts]
+      additionalProperties: false
+
+  responses:
+    PingGetResponse:
+      description: ping get successful (inner description)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Ping'
