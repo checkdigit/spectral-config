@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/checkdigit/spectral-config.git"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Check Digit, LLC",
   "main": "ruleset.json",
   "files": [

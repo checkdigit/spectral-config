@@ -58,3 +58,7 @@ Install Spectral, by Spotlight https://marketplace.visualstudio.com/items?itemNa
 `operation-operationId  Operation must have "operationId"`
 
 Add an operationId to the operation. Check Digit uses a `noun-noun-verb` naming convention. For example, the correct operationId for a `PUT` to path `/resource/{id}/item/{itemId}/key` is `resource-item-key-put`
+
+## License
+
+MIT
